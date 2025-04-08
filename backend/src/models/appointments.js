@@ -3,29 +3,36 @@
     date
     time
     motive
-    doctor
-    patient
+    doctor_id
+    patient_id
 */
 
 import { Schema, model } from "mongoose";
 
 const appointmentSchema = new Schema(
   {
-    name: {
+    date: {
       type: String,
       require: true,
     },
 
-    email: {
+    time: {
       type: String,
     },
 
-    password: {
+    motive: {
         type: String,
     },
 
-    specialty: {
-      type: String,
+    doctor_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Doctors",
+      require: true
+    },
+    patient_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Patients",
+      require: true
     }
   },
   {
